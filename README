@@ -1,0 +1,54 @@
+Author: Julian Noble - julian@precisium.com.au
+
+sqlpretty is a *basic* formatter and colourizer for SQL in classic ASP.
+
+It doesn't do a full smart parse of various SQL dialects - but does a reasonable enough job of making some fairly complex SQL statements readable.
+
+It spits out HTML with DIV tags used to indent bracketed statements, and SPANs with class attributes to differentiate various SQL keywords.
+BR and CRLFs are used to put certain keywords on new lines.
+
+To get the colorized output, your page will need to link to the provided css file.
+
+e.g place in the head:
+
+    <link rel="stylesheet" type="text/css" href="/sqlpretty/sqlpretty.css"> 
+
+You should also link to jQuery and the provided js file:
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript">jQuery.noConflict();</script>
+    <script type="text/javascript" src="/sqlpretty/sqlpretty.js"></script>
+
+The javascript is not required - but gives a much nicer result in the form of a clickable link which will hide and show the SQL.
+
+Your ASP page should have an include line like the following:
+
+    <!-- #include virtual="/sqlpretty/sqlpretty.inc" -->
+    
+
+Basic usage in your ASP code is just to call the sql_pretty function
+e.g
+        sql = "select o.*, a.*, c.* from ((addresses as a inner join orders as o on a.id=o.deliveryid) inner join () as u on o.userid=u.id) Where o.type='x' order by o.id"
+        response.write sql_pretty(sql)
+
+This would result in a link displaying "Show SQL"
+When clicked, this changes to "Hide SQL" and displays the colourized output.
+
+
+To avoid the brief HTML reflow flicker caused by the default visible style of the output (necessary for sensible result when javascript not being used),
+make the following call just before calling sql_pretty
+    sql_pretty_default_hide()
+    
+
+Multiple SQL statements can be displayed on a single page.
+To differentiate all the links that would result - you can customize the 'Show SQL' / 'Hide SQL' by using the sql_pretty_named  function.
+e.g
+        
+        response.write sql_pretty_named(sql_p,"product SQL")
+        response.write sql_pretty_named(sql_c,"category SQL")
+        
+This would give links,  "Show product SQL" / "Hide product SQL"  and "Show category SQL" / "Hide category SQL"
+
+    
+        
+        
