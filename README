@@ -28,7 +28,7 @@ Your ASP page should have an include line like the following:
 
 Basic usage in your ASP code is just to call the sql_pretty function
 e.g
-        sql = "select o.*, a.*, c.* from ((addresses as a inner join orders as o on a.id=o.deliveryid) inner join () as u on o.userid=u.id) Where o.type='x' order by o.id"
+        sql = "select o.*, a.*, c.* from ((addresses as a inner join orders as o on a.id=o.deliveryid) inner join (select users.id from users,orders where orders.userid=user.id group by users.id having count(orders.orderid) >= 1) as u on o.userid=u.id) Where o.type='x' order by o.id"
         response.write sql_pretty(sql)
 
 This would result in a link displaying "Show SQL"
