@@ -1,0 +1,69 @@
+    
+    .sqlpretty .sqlword {
+        color: green;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.secondary {
+        color: maroon;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.join {
+        color: teal;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.logic {
+        color: black;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.function {
+        color: navy;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.write {
+        color: red;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlword.object {
+        color: orange;
+        font-weight: bold;
+    }
+    .sqlpretty .sqlbracket {
+        color: blue;
+        font-weight: bold;
+    }
+    .sqlpretty div.sqlindent {
+        border-left: 1px dotted blue;
+        border-top: 1px dotted #ccc;
+        border-bottom: 1px dotted #ccc;
+        padding-left: 20px;
+        padding-top: 2px;
+        margin-top: 0px;
+    }
+    .sqlpretty .sqlpretty-raw {
+        display: none;
+    }
+    .sqlpretty .sqlpretty-formatted {
+        display: block;
+    }
+    
+    /* 
+        .sqlpretty-handle and .sqlpretty-result elements should default to visible 
+        so that sql_pretty is useful on javascriptless pages.
+      
+        The sample js above will hide the elements appropriately.
+        To avoid page reflow - call sql_pretty_default_hide() before calling the sql_pretty... functions
+    */
+    
+    .sqlpretty div.sqlpretty-handle {
+        visibility: visible;
+    }
+    .sqlpretty div.sqlpretty-result {
+        display: block; 
+    }
+    
+    /* If this css file not linked, the warning will show*/
+    .sqlpretty .sqlpretty-css-warning {
+        display: none;
+    }
+    
+    
