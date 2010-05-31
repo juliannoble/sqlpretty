@@ -16,5 +16,5 @@ response.write sql_pretty(sql)
     <script type="text/javascript">jQuery.noConflict();</script>
     <script type="text/javascript" src="/sqlpretty/sqlpretty.js"></script>
 </body>
-
+</html>
 
