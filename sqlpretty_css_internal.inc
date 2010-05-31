@@ -2,7 +2,7 @@
 <%
 dim fso,ts
 set fso = server.CreateObject("Scripting.FilesystemObject")
-Set ts = fso.OpenTextFile(server.mappath("sqlpretty.css"))
+Set ts = fso.OpenTextFile(server.mappath("/sqlpretty/sqlpretty.css"))
 css_data = ts.ReadAll
 ts.Close
 
