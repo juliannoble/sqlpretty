@@ -245,7 +245,6 @@ function sql_pretty(byval sqlstr)
                 word = ""
             else
                 word = word & ch
-                first_in_div = false
             end if
     next
     result = result & word
