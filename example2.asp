@@ -13,7 +13,7 @@
 <hr>
 <%
 dim sql
-sql = "select o.*, a.*, c.* from ((addresses as a inner join orders as o on a.id=o.deliveryid) inner join (select users.id from users,orders where orders.userid=user.id group by users.id having count(orders.orderid) >= 1) as u on o.userid=u.id) Where o.type='x' order by o.id"
+sql = "select o.*, a.*, c.* from ((addresses as a inner join orders as o on a.id=o.deliveryid) inner join (select users.id from users,orders where orders.userid=user.id group by users.id having count(orders.orderid) >= 1) as u on o.userid=u.id) Where o.type='x' order by o.id;"
 sql = sql & "ALTER TABLE `product` ADD COLUMN `c3` VARCHAR(255) AFTER `c2`, ADD COLUMN `abc` VARCHAR(255) AFTER `xyz`;"
 response.write sql_pretty(sql)
 %>
