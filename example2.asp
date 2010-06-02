@@ -1,3 +1,4 @@
+<%@ Language="VBScript" %>
 <html>
 <head>
 </head>

@@ -1,3 +1,4 @@
+<%@ Language="VBScript" %>
 <!-- #include virtual="/sqlpretty/sqlpretty.inc" -->
 <html>
 <head>
