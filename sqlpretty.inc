@@ -266,7 +266,7 @@ function sql_pretty(byval sqlstr)
     end if
     
     sql_pretty = vbcrlf & _
-    "<div class=""sqlpretty"">" & vbcrlf & _
+    "<div id=""sqlpretty-" & replace(SQL_PRETTY_LINKNAME," ","") & """ class=""sqlpretty"">" & vbcrlf & _
     "    <div class=""sqlpretty-handle"" " & handle_display_style & ">" & vbcrlf & _
     "        <a href=""#"" class=""sqlpretty-hide-show"">" & SQL_PRETTY_LINKNAME & "</a>" & vbcrlf & _
     "    </div>" & vbcrlf & _
