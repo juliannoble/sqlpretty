@@ -37,6 +37,13 @@ dim SQL_PRETTY_DEFAULT_HIDDEN
 SQL_PRETTY_DEFAULT_HIDDEN = false  'so that sql_pretty is useful on javascriptless pages. Call sql_pretty_default_hide() to stop reflow-flicker if using javascript.
 
 
+dim SQLPRETTY_ENABLE
+if (application("SQLPRETTY_ENABLE") = "1") then
+    SQLPRETTY_ENABLE = true
+else
+    SQLPRETTY_ENABLE = false
+end if
+
 '-----------------------------------------------
 'API 
 
@@ -56,6 +63,31 @@ end function
 function sql_pretty(byval sqlstr)
     dim i
     dim k
+    
+    if not SQLPRETTY_ENABLE then
+    
+        sql_pretty = vbcrlf & _
+        "<div id=""sqlpretty-" & replace(SQL_PRETTY_LINKNAME," ","") & """ class=""sqlpretty"">" & vbcrlf & _
+        "    <div class=""sqlpretty-handle"" " & handle_display_style & ">" & vbcrlf & _
+        "        <a href=""#"" class=""sqlpretty-hide-show"">" & SQL_PRETTY_LINKNAME & "</a>" & vbcrlf & _
+        "    </div>" & vbcrlf & _
+        "    <div class=""sqlpretty-result"" " & result_display_style & ">" & vbcrlf & _
+        "        <span class=""sqlpretty-css-warning"">(add a link to /sqlpretty/sqlpretty.css to see coloured output)</span>" & vbcrlf & _
+        "        <div class=""sqlpretty-formatted"">" & vbcrlf & _
+        "SQLPRETTY disabled  (Application variable 'SQLPRETTY_ENABLE') " & vbcrlf & _
+        "        </div>" & vbcrlf & _ 
+        "        <div class=""sqlpretty-raw"">" & vbcrlf & _
+        "            <pre>" & _
+        "SQLPRETTY disabled (Application variable 'SQLPRETTY_ENABLE')" & _
+        "            </pre>" & vbcrlf & _
+        "        </div>" & vbcrlf & _ 
+        "    </div>" & vbcrlf & _
+        "</div>" & vbcrlf
+        exit function
+    end if
+    
+    
+    
     set k = server.createobject("Scripting.Dictionary")
     
     k.add "(", "bracket"

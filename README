@@ -7,6 +7,11 @@ It doesn't do a full smart parse of various SQL dialects - but does a reasonable
 It spits out HTML with DIV tags used to indent bracketed statements, and SPANs with class attributes to differentiate various SQL keywords.
 BR and CRLFs are used to put certain keywords on new lines.
 
+SQL output needs to be globally enabled with an application variable setting.
+e.g in global.asa
+            application("SQLPRETTY_ENABLE") = "1"
+This gives an easy way to ensure SQL is not being displayed on a production site.
+
 To get the colorized output, your page will need to link to the provided css file.
 
 e.g place in the head:
@@ -50,5 +55,4 @@ e.g
 This would give links,  "Show product SQL" / "Hide product SQL"  and "Show category SQL" / "Hide category SQL"
 
     
-        
         
